@@ -1,0 +1,22 @@
+name: 'Backup to S3'
+description: 'A GitHub Action to back up a repository to AWS S3'
+author: 'Tiago Colombo <tcolombo@gmail.com>'
+inputs:
+  s3-bucket:
+    description: 'The name of the S3 bucket'
+    required: true
+  aws-access-key-id:
+    description: 'AWS Access Key ID'
+    required: true
+  aws-secret-access-key:
+    description: 'AWS Secret Access Key'
+    required: true
+  aws-region:
+    description: 'AWS Region'
+    required: true
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+branding:
+  icon: 'cloud'
+  color: 'blue'
