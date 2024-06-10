@@ -42,7 +42,7 @@ async function run() {
 
       try {
         await s3.send(new PutObjectCommand(params));
-        core.info('Backup successful');
+        core.info(`Backup successful: ${repository}/${archivePath}`);
       } catch (err: any) {
         core.setFailed(`Backup failed: ${err.message}`);
       }
