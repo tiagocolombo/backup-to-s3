@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Backup repository to S3
-        uses: YOUR_USERNAME/YOUR_REPOSITORY@v1
+        uses: tiagocolombo/backup-to-s3@v1
         with:
           s3-bucket: 'your-s3-bucket-name'
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
