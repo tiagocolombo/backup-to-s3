@@ -1,0 +1,24 @@
+name: Backup to S3
+
+on:
+  schedule:
+    - cron: '0 0 1 * *' # This cron expression runs the job at midnight on the first day of every month
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Backup repository to S3
+        uses: tiagocolombo/backup-to-s3@v1
+        with:
+          s3-bucket: '${{ vars.S3_BUCKET }}'
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: 'us-east-1'
