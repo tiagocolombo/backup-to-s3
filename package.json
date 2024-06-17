@@ -2,10 +2,11 @@
   "name": "backup-to-s3",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && tsc && npm run pack",
+    "pack": "cp package.json dist/ && cp README.md dist/ && cd dist && npm pack",
+    "clean": "rm -rf dist"
   },
   "keywords": [],
   "author": "",
